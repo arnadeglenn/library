@@ -1,13 +1,18 @@
+const bookLibrary = [];
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
-    this.info = function() {
-        let bookInfo = `${title} by ${author}, ${pages}, ${read}`
-        return bookInfo
-    }
+    this.read = true;
 };
 
-const theHobbit = new Book('The Hobbit', 'JRR Tolkien', '295 Pages', 'Not Read');
-console.log(theHobbit.info());
+function addBookToLibrary() {
+    let bookName = '';
+    let authorName = '';
+    let bookPage = parseInt('');
+    let bookRead = true;
+    let bookObject = new Book(bookName, authorName, bookPage, bookRead);
+    bookLibrary.push(bookObject);
+}
+
