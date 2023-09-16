@@ -1,4 +1,15 @@
-const bookLibrary = [];
+const bookLibrary = [
+    {title: 'The Hobbit',
+    author: 'Glenn',
+    pages: '234',
+    read: true,
+},
+    {title: 'The Weight',
+    author: 'Frank Arnade',
+    pages: '566',
+    read: false,
+}
+];
 
 
 const pageLibrary = document.querySelector('.library');
@@ -21,7 +32,7 @@ function addBookToArray() {
 }
 
 function addBookToLibrary() {
-    for(let i=0; 0<=i<=bookLibrary.length(); i++) {
+    for(let i=0; i<bookLibrary.length; i++) {
         let createBookDiv = document.createElement('div');
         pageLibrary.appendChild(createBookDiv);
         createBookDiv.classList.add('book');
@@ -57,11 +68,17 @@ function addBookToLibrary() {
         let createButtonRead = document.createElement('button');
         createButtonDiv.appendChild(createButtonRead);
         createButtonRead.classList.add('change-read');
+        createButtonRead.textContent = 'Read?';
 
         let createButtonDelete = document.createElement('button');
         createButtonDiv.appendChild(createButtonDelete);
         createButtonDelete.classList.add('delete');
+        createButtonDelete.textContent = 'Delete';
 
     }
 }
+
+addBookToLibrary();
+
+
 
