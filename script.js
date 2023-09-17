@@ -5,6 +5,12 @@ const pageLibrary = document.querySelector('.library');
 const addBookButton = document.querySelector('#add-book');
 const closeModal = document.querySelector('.close-modal');
 const modal = document.querySelector('.modal');
+const inputBook = document.querySelector('.book-title');
+const inputAuthor = document.querySelector('.book-author');
+const inputPages = document.querySelector('.book-pages');
+const inputRead = document.querySelector('.book-read');
+const inputBookButton = document.querySelector('add-book');
+
 
 addBookButton.addEventListener('click', (e) => {
     modal.showModal();
@@ -14,6 +20,12 @@ closeModal.addEventListener('click', (e) => {
     modal.close();
 })
 
+inputBookButton.addEventListener('click', (e) =>{
+    e.preventDefault();
+    callBothFunctions(e);
+})
+
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -22,10 +34,11 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToArray() {
-    let bookName = '';
-    let authorName = '';
-    let bookPage = '';
-    let bookRead = true;
+    let bookName = inputBook.value;
+    console.log(bookName);
+    let authorName = inputAuthor.value;
+    let bookPage = inputPages.value;
+    let bookRead = inputRead.value;
     let bookObject = new Book(bookName, authorName, bookPage, bookRead);
     bookLibrary.push(bookObject);
 }
@@ -75,6 +88,11 @@ function addBookToLibrary() {
         createButtonDelete.textContent = 'Delete';
 
     }
+}
+
+function callBothFunctions() {
+    addBookToArray();
+    addBookToLibrary();
 }
 
 
