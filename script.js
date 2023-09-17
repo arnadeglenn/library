@@ -26,18 +26,20 @@ inputBookButton.addEventListener('click', (e) =>{
     callBothFunctions(e);
 })
 
-allDeleteButton.forEach((button) => {
-    button.addEventListener('click', (e) => {
-       const bookNumber = button.getAttribute('data-index');
-       deleteBook(bookNumber);
-       updateLibraryDisplay();
-    })
+pageLibrary.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete')) {
+        const button = e.target;
+        const bookNumber = button.getAttribute('data-index');
+        deleteBook(bookNumber);
+        pageLibrary.innerHTML = '';
+        addBookToLibrary();
+    }
 });
 
 
-function deleteBook(index) {
-    bookLibrary.splice(index,1);
-}
+ function deleteBook(index) {
+     bookLibrary.splice(index,1);
+ }
 
 
 
@@ -82,7 +84,7 @@ function addBookToLibrary() {
         let createRead = document.createElement('p');
         createBookDiv.appendChild(createRead);
         createRead.classList.add('read');
-        if (bookLibrary[0+i].read === true) {
+        if (bookLibrary[0+i].read === 'true') {
             createRead.textContent = "Read: Yes"
         } else {
             createRead.textContent = "Read: Not Yet"
@@ -96,11 +98,13 @@ function addBookToLibrary() {
         createButtonDiv.appendChild(createButtonRead);
         createButtonRead.classList.add('change-read');
         createButtonRead.textContent = 'Read?';
+        createButtonRead.setAttribute('data-index', i);
 
         let createButtonDelete = document.createElement('button');
         createButtonDiv.appendChild(createButtonDelete);
         createButtonDelete.classList.add('delete');
         createButtonDelete.textContent = 'Delete';
+        createButtonDelete.setAttribute('data-index', i);
 
     }
 }
