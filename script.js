@@ -10,6 +10,7 @@ const inputAuthor = document.querySelector('#input-author');
 const inputPages = document.querySelector('#input-pages');
 const inputRead = document.querySelector('#input-read');
 const inputBookButton = document.querySelector('#add-book-form');
+const allDeleteButton = document.querySelectorAll('.delete');
 
 
 addBookButton.addEventListener('click', (e) => {
@@ -24,6 +25,20 @@ inputBookButton.addEventListener('click', (e) =>{
     e.preventDefault();
     callBothFunctions(e);
 })
+
+allDeleteButton.forEach((button) => {
+    button.addEventListener('click', (e) => {
+       const bookNumber = button.getAttribute('data-index');
+       deleteBook(bookNumber);
+       updateLibraryDisplay();
+    })
+});
+
+
+function deleteBook(index) {
+    bookLibrary.splice(index,1);
+}
+
 
 
 function Book(title, author, pages, read) {
@@ -92,9 +107,11 @@ function addBookToLibrary() {
 
 function callBothFunctions() {
     addBookToArray();
+    pageLibrary.innerHTML = '';
     addBookToLibrary();
     modal.close();
 }
+
 
 
 
