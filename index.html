@@ -37,6 +37,27 @@
             </div>
         </div>
     </div>
+    <dialog class="modal">
+        <div class="close-modal">
+            <p>X</p>
+        </div>
+        <form class="form" method="dialog">
+
+            <h2>What Book Do You Want to Add?</h2>
+            <label for="input-title">Book Name</label>
+            <input type="text" id="input-title book-title">
+            <label for="input-author">Author</label>
+            <input type="text" id="book-author">
+            <label for="input-pages">Number of Pages</label>
+            <input type="text" id="book-pages">
+            <label for="input-read">Have Your Read the Book?</label>
+            <select name="read" id="input-read book-read">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <button type="submit">Add Book</button>
+        </form>
+    </dialog>
     
 </body>
 </html>

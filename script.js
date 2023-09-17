@@ -1,19 +1,18 @@
-const bookLibrary = [
-    {title: 'The Hobbit',
-    author: 'Glenn',
-    pages: '234',
-    read: true,
-},
-    {title: 'The Weight',
-    author: 'Frank Arnade',
-    pages: '566',
-    read: false,
-}
-];
+const bookLibrary = [];
 
 
 const pageLibrary = document.querySelector('.library');
 const addBookButton = document.querySelector('#add-book');
+const closeModal = document.querySelector('.close-modal');
+const modal = document.querySelector('.modal');
+
+addBookButton.addEventListener('click', (e) => {
+    modal.showModal();
+})
+
+closeModal.addEventListener('click', (e) => {
+    modal.close();
+})
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -77,8 +76,6 @@ function addBookToLibrary() {
 
     }
 }
-
-addBookToLibrary();
 
 
 
