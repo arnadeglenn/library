@@ -36,11 +36,28 @@ pageLibrary.addEventListener('click', (e) => {
     }
 });
 
+pageLibrary.addEventListener('click', (e) => {
+    if (e.target.classList.contains('change-read')) {
+        const button = e.target;
+        const bookNumber = button.getAttribute('data-index');
+        changeReadStatus(bookNumber);
+        pageLibrary.innerHTML = '';
+        addBookToLibrary();
+    }
+});
+
 
  function deleteBook(index) {
      bookLibrary.splice(index,1);
  }
 
+ function changeReadStatus(index) {
+    if (bookLibrary[index].read === "true") {
+        bookLibrary[index].read = "false";
+    } else if (bookLibrary[index].read === "false") {
+        bookLibrary[index].read = "true";
+    };
+ };
 
 
 function Book(title, author, pages, read) {
