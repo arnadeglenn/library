@@ -5,11 +5,11 @@ const pageLibrary = document.querySelector('.library');
 const addBookButton = document.querySelector('#add-book');
 const closeModal = document.querySelector('.close-modal');
 const modal = document.querySelector('.modal');
-const inputBook = document.querySelector('.book-title');
-const inputAuthor = document.querySelector('.book-author');
-const inputPages = document.querySelector('.book-pages');
-const inputRead = document.querySelector('.book-read');
-const inputBookButton = document.querySelector('add-book');
+const inputBook = document.querySelector('#input-title');
+const inputAuthor = document.querySelector('#input-author');
+const inputPages = document.querySelector('#input-pages');
+const inputRead = document.querySelector('#input-read');
+const inputBookButton = document.querySelector('#add-book-form');
 
 
 addBookButton.addEventListener('click', (e) => {
@@ -30,7 +30,7 @@ function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = true;
+    this.read = read;
 }
 
 function addBookToArray() {
@@ -93,6 +93,7 @@ function addBookToLibrary() {
 function callBothFunctions() {
     addBookToArray();
     addBookToLibrary();
+    modal.close();
 }
 
 
